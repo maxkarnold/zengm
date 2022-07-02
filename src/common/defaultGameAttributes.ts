@@ -271,6 +271,46 @@ export const hockeyOverrides: Partial<GameAttributesLeagueWithHistory> =
 		: {};
 
 // Extra condition for NODE_ENV is because we use this export only in tests, so we don't want it in the basketball bundle!
+export const soccerOverrides: Partial<GameAttributesLeagueWithHistory> =
+	process.env.NODE_ENV === "test" || isSport("soccer")
+		? {
+				numGames: 34,
+				numGamesDiv: null,
+				numGamesConf: 26,
+				quarterLength: 45,
+				numGamesPlayoffSeries: wrap([1, 1, 1, 1]),
+				numPlayoffByes: wrap(2),
+				numPeriods: 2,
+				// numTeams: 28,
+				ties: wrap(true),
+				salaryCapType: "soft", // MLS has special rules for salary cap (e.g. Designated Player, Target Allocation Money)
+				// luxuryPayroll: N/A
+				draftType: "noLottery",
+				numDraftRounds: 4,
+				// Need an attribute for MLS Re-Entry Draft
+				draftAges: [14, 22],
+				salaryCap: 4900,
+				minPayroll: 0,
+				minContract: 81,
+				maxContract: 613,
+				minRosterSize: 18,
+				maxRosterSize: 30,
+				// 0.05 injuries per game per player per possession... (NEED TO FIGURE OUT THE MATH FOR THIS)
+				// Source of injury data for MLS: https://pubmed.ncbi.nlm.nih.gov/11476380/#:~:text=The%20overall%20injury%20rate%20was,hours%20was%20found%20for%20games.
+				injuryRate: 0.05 / 22 / 1000,
+				// 40 days per season, 1 tragic death per 50 years
+				tragicDeathRate: 1 / (40 * 50),
+				allStarGame: null,
+				numPlayersOnCourt: 11,
+				playoffsNumTeamsDiv: wrap(0),
+				playIn: false,
+				// Not sure how draft pick auto contracts should work
+				draftPickAutoContractPercent: 10,
+				draftPickAutoContractRounds: 2,
+				draftPickAutoContract: false,
+		  }
+		: {};
+
 export const baseballOverrides: Partial<GameAttributesLeagueWithHistory> =
 	process.env.NODE_ENV === "test" || isSport("baseball")
 		? {
@@ -311,6 +351,8 @@ if (isSport("football")) {
 	Object.assign(defaultGameAttributes, hockeyOverrides);
 } else if (isSport("baseball")) {
 	Object.assign(defaultGameAttributes, baseballOverrides);
+} else if (isSport("soccer")) {
+	Object.assign(defaultGameAttributes, soccerOverrides);
 }
 
 export default defaultGameAttributes;

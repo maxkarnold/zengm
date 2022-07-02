@@ -5,9 +5,11 @@ const bySport = <T extends unknown>(
 				basketball: T;
 				football: T;
 				hockey: T;
+				soccer: T;
 				default?: T;
 		  }
 		| {
+				soccer?: T;
 				baseball?: T;
 				basketball?: T;
 				football?: T;

@@ -11,6 +11,27 @@ const gp = isSport("hockey") ? "GP" : "G";
 const sportSpecificCols = bySport<{
 	[key: string]: ColTemp;
 }>({
+	soccer: {
+		"pos:GK": {
+			desc: "Goalkeeper",
+			sortType: "number",
+			title: "GK",
+		},
+		// NOT SURE WHAT TO DO ABOUT POSITIONS, SHOULD HAVE A LOT OF DIFFERENT POSITIONS,
+		// I THINK IT WOULD BE SMART TO USE THE BASKETBALL FORMULA FOR POSITIONS
+		"rating:ss": {
+			desc: "Shot Stopping",
+			sortSequence: ["desc", "asc"],
+			sortType: "number",
+			title: "SS",
+		},
+		"rating:gkd": {
+			desc: "Goalkeeper Distribution",
+			sortSequence: ["desc", "asc"],
+			sortType: "number",
+			title: "GkD",
+		},
+	},
 	baseball: {
 		"pos:SP": {
 			desc: "Starting Pitcher",

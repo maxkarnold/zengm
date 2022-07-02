@@ -3,6 +3,7 @@ import * as constantsBaseball from "./constants.baseball";
 import * as constantsBasketball from "./constants.basketball";
 import * as constantsFootball from "./constants.football";
 import * as constantsHockey from "./constants.hockey";
+import * as constantsSoccer from "./constants.soccer";
 
 import type { CompositeWeights, Phase, DraftType, MoodTrait } from "./types";
 
@@ -23,6 +24,7 @@ const DIFFICULTY = {
 };
 
 const DRAFT_BY_TEAM_OVR = bySport({
+	soccer: true,
 	baseball: true,
 	basketball: false,
 	football: true,
@@ -104,6 +106,7 @@ const STRIPE_PUBLISHABLE_KEY =
 		: "pk_live_Dmo7Vs6uSaoYHrFngr4lM0sa";
 
 const COMPOSITE_WEIGHTS = bySport<CompositeWeights>({
+	soccer: constantsSoccer.COMPOSITE_WEIGHTS,
 	baseball: constantsBaseball.COMPOSITE_WEIGHTS,
 	basketball: constantsBasketball.COMPOSITE_WEIGHTS,
 	football: constantsFootball.COMPOSITE_WEIGHTS,
@@ -117,6 +120,7 @@ const PLAYER_GAME_STATS = bySport<{
 		sortBy: string[];
 	};
 }>({
+	soccer: constantsSoccer.PLAYER_GAME_STATS,
 	baseball: constantsBaseball.PLAYER_GAME_STATS,
 	basketball: constantsBasketball.PLAYER_GAME_STATS,
 	football: constantsFootball.PLAYER_GAME_STATS,
@@ -131,6 +135,7 @@ const PLAYER_SUMMARY = bySport<{
 		superCols?: any[];
 	};
 }>({
+	soccer: constantsSoccer.PLAYER_SUMMARY,
 	baseball: constantsBaseball.PLAYER_SUMMARY,
 	basketball: constantsBasketball.PLAYER_SUMMARY,
 	football: constantsFootball.PLAYER_SUMMARY,
@@ -145,6 +150,7 @@ const PLAYER_STATS_TABLES = bySport<{
 		superCols?: any[];
 	};
 }>({
+	soccer: constantsSoccer.PLAYER_STATS_TABLES,
 	baseball: constantsBaseball.PLAYER_STATS_TABLES,
 	basketball: constantsBasketball.PLAYER_STATS_TABLES,
 	football: constantsFootball.PLAYER_STATS_TABLES,
@@ -152,6 +158,7 @@ const PLAYER_STATS_TABLES = bySport<{
 });
 
 const RATINGS = bySport<any[]>({
+	soccer: constantsSoccer.RATINGS,
 	baseball: constantsBaseball.RATINGS,
 	basketball: constantsBasketball.RATINGS,
 	football: constantsFootball.RATINGS,
@@ -161,6 +168,7 @@ const RATINGS = bySport<any[]>({
 const POSITION_COUNTS: {
 	[key: string]: number;
 } = bySport({
+	soccer: constantsSoccer.POSITION_COUNTS,
 	baseball: constantsBaseball.POSITION_COUNTS,
 	basketball: constantsBasketball.POSITION_COUNTS,
 	football: constantsFootball.POSITION_COUNTS,
@@ -168,6 +176,7 @@ const POSITION_COUNTS: {
 });
 
 const POSITIONS = bySport<any[]>({
+	soccer: constantsSoccer.POSITIONS,
 	baseball: constantsBaseball.POSITIONS,
 	basketball: constantsBasketball.POSITIONS,
 	football: constantsFootball.POSITIONS,
@@ -184,6 +193,7 @@ const TEAM_STATS_TABLES = bySport<
 		}
 	>
 >({
+	soccer: constantsSoccer.TEAM_STATS_TABLES,
 	baseball: constantsBaseball.TEAM_STATS_TABLES,
 	basketball: constantsBasketball.TEAM_STATS_TABLES,
 	football: constantsFootball.TEAM_STATS_TABLES,
@@ -203,6 +213,7 @@ const MOOD_TRAITS: Record<MoodTrait, string> = {
 };
 
 const SIMPLE_AWARDS = bySport<Readonly<string[]>>({
+	soccer: constantsSoccer.SIMPLE_AWARDS,
 	baseball: constantsBaseball.SIMPLE_AWARDS,
 	basketball: constantsBasketball.SIMPLE_AWARDS,
 	football: constantsFootball.SIMPLE_AWARDS,
@@ -210,6 +221,7 @@ const SIMPLE_AWARDS = bySport<Readonly<string[]>>({
 });
 
 const AWARD_NAMES = bySport<Record<string, string>>({
+	soccer: constantsSoccer.AWARD_NAMES,
 	baseball: constantsBaseball.AWARD_NAMES,
 	basketball: constantsBasketball.AWARD_NAMES,
 	football: constantsFootball.AWARD_NAMES,
@@ -217,6 +229,7 @@ const AWARD_NAMES = bySport<Record<string, string>>({
 });
 
 const DEFAULT_CONFS = bySport({
+	soccer: constantsSoccer.DEFAULT_CONFS,
 	baseball: constantsBaseball.DEFAULT_CONFS,
 	basketball: constantsBasketball.DEFAULT_CONFS,
 	football: constantsFootball.DEFAULT_CONFS,
@@ -224,6 +237,7 @@ const DEFAULT_CONFS = bySport({
 });
 
 const DEFAULT_DIVS = bySport({
+	soccer: constantsSoccer.DEFAULT_DIVS,
 	baseball: constantsBaseball.DEFAULT_DIVS,
 	basketball: constantsBasketball.DEFAULT_DIVS,
 	football: constantsFootball.DEFAULT_DIVS,
@@ -231,6 +245,7 @@ const DEFAULT_DIVS = bySport({
 });
 
 const DEFAULT_STADIUM_CAPACITY = bySport({
+	soccer: constantsSoccer.DEFAULT_STADIUM_CAPACITY,
 	baseball: constantsBaseball.DEFAULT_STADIUM_CAPACITY,
 	basketball: constantsBasketball.DEFAULT_STADIUM_CAPACITY,
 	football: constantsFootball.DEFAULT_STADIUM_CAPACITY,
@@ -238,6 +253,7 @@ const DEFAULT_STADIUM_CAPACITY = bySport({
 });
 
 const COURT = bySport({
+	soccer: "field",
 	baseball: "field",
 	basketball: "court",
 	football: "field",
@@ -247,6 +263,7 @@ const COURT = bySport({
 const EMAIL_ADDRESS = "jeremy@zengm.com";
 
 const GAME_ACRONYM = bySport({
+	soccer: "ZGMS",
 	baseball: "ZGMB",
 	basketball: "BBGM",
 	football: "FBGM",
@@ -254,6 +271,7 @@ const GAME_ACRONYM = bySport({
 });
 
 const GAME_NAME = bySport({
+	soccer: "ZenGM Soccer",
 	baseball: "ZenGM Baseball",
 	basketball: "Basketball GM",
 	football: "Football GM",
@@ -261,6 +279,7 @@ const GAME_NAME = bySport({
 });
 
 const SUBREDDIT_NAME = bySport({
+	soccer: "ZenGMSoccer",
 	baseball: "ZenGMBaseball",
 	basketball: "BasketballGM",
 	football: "Football_GM",
@@ -280,6 +299,7 @@ const FACEBOOK_USERNAME = bySport({
 });
 
 const SPORT_HAS_REAL_PLAYERS = bySport({
+	soccer: false,
 	baseball: false,
 	basketball: true,
 	football: false,
@@ -287,6 +307,7 @@ const SPORT_HAS_REAL_PLAYERS = bySport({
 });
 
 const SPORT_HAS_LEGENDS = bySport({
+	soccer: false,
 	baseball: false,
 	basketball: true,
 	football: false,
@@ -294,6 +315,7 @@ const SPORT_HAS_LEGENDS = bySport({
 });
 
 const WEBSITE_PLAY = bySport({
+	soccer: "soccer.zengm.com",
 	baseball: "baseball.zengm.com",
 	basketball: "play.basketball-gm.com",
 	football: "play.football-gm.com",
@@ -301,6 +323,7 @@ const WEBSITE_PLAY = bySport({
 });
 
 const WEBSITE_ROOT = bySport({
+	soccer: "zengm.com/soccer",
 	baseball: "zengm.com/baseball",
 	basketball: "basketball-gm.com",
 	football: "football-gm.com",
@@ -350,6 +373,7 @@ const AD_DIVS = bySport({
 });
 
 const DEFAULT_JERSEY = bySport({
+	soccer: "soccer",
 	baseball: "baseball2:hat2",
 	basketball: "jersey3",
 	football: "football",
@@ -391,6 +415,12 @@ const JERSEYS = bySport({
 		hockey4: "Stripe 3",
 		hockey2: "Plain",
 	},
+	soccer: {
+		soccer: "Stripe",
+		soccer3: "Stripe 2",
+		soccer4: "Stripe 3",
+		soccer2: "Plain",
+	},
 });
 
 // Target: 90% in playThroughInjuriesFactor
@@ -399,6 +429,7 @@ const DEFAULT_PLAY_THROUGH_INJURIES = bySport<[number, number]>({
 	basketball: [0, 4],
 	football: [0, 2],
 	hockey: [0, 4],
+	soccer: [0, 2],
 });
 
 const DAILY_SCHEDULE = `${

@@ -31,6 +31,9 @@ const filterPlayerStats = (p: any, stats: string[], type: string) => {
 				(type === "goalies" && p.gpGoalie > 0)
 			);
 		},
+		soccer: () => {
+			return p.min > 0;
+		},
 	})();
 };
 
